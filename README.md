@@ -5,17 +5,23 @@ A remote eye to look over the things that matter most to you. Open source, secur
 
 ## Design
 
-180 Degree Fisheye Camera - Capture video around the Palentir when motion is detected. 
+- 180 Degree Fisheye Camera 
+    - Capture video around the Palentir when motion is detected. 
 
-Audio Detection - Be alerted to loud sounds
+- Audio Detection 
+    - Be alerted to loud sounds
 
-Accelerometer - The 3-axis accelerometer detects movement of the Palentir and alerts you.
+- Accelerometer 
+    - The 3-axis accelerometer detects movement of the Palentir and alerts you.
 
-PIR Motion Detection - Be alerted when the presence of thermal changes in the environment including human, animal and other precense.
+- PIR Motion Detection 
+    - Be alerted when the presence of thermal changes in the environment including human, animal and other precense.
 
-Microwave Motion Detection - This motion sensor can detect movement behind objects using microwaves :)
+- Microwave Motion Detection 
+    - This motion sensor can detect movement behind objects using microwaves :)
 
-Heartbeat - Detect when device goes offline and can no longer be reached via network
+- Heartbeat 
+    - Detect when device goes offline and can no longer be reached via network
 
 ---
 
