@@ -51,3 +51,21 @@ A remote eye to look over the things that matter most to you. Open source, secur
 
 - send message to more than person
 
+
+
+--- 
+
+Networking
+
+wireguard server created via ALGO. From your laptop, set up algo and have it create an AWS Lightsail instance
+
+if you need to ssh to the pi, ssh from the algo vpn server. Note: All ports on PI should be blocked from wifi network.
+```
+sudo ssh pi@10.49.0.2
+```
+
+If disabling ssh on wifi, you should enable ssh access via ethernet
+
+build a simple bash or python script that checks connectivity. If there is no connectivity, disable
+one interface and try the other, otherwise disable the other interface
+
