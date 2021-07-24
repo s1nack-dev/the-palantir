@@ -6,3 +6,5 @@
 # https://www.sparkfun.com/datasheets/BreakoutBoards/0712.pdf
 
 # https://github.com/abelectronicsuk/ABElectronics_Python_Libraries/blob/master/ADCPi/demos/demo_acs712_30.py
+
+# need a mcp3008 analog to digital converter for the raspberry pi
