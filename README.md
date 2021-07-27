@@ -50,7 +50,9 @@ A remote eye to look over the things that matter most to you. Open source, secur
 ## Notes/Suggestions from others
 
 - send message to more than person
-
+- consider a switch on the side, attached to a Small trinket, when the switch is turned off, it will send a alert to the pi, which will alert the owner the system is being shutdown. Then it will shutdown in 30 seconds. Upon turning the switch on, the raspberry ip will power on.
+    - This can also connect to the current sensor and send readings back to the pi
+    - could also possibly act as a heart beat/watchdog
 
 
 --- 
@@ -69,3 +71,6 @@ If disabling ssh on wifi, you should enable ssh access via ethernet
 build a simple bash or python script that checks connectivity. If there is no connectivity, disable
 one interface and try the other, otherwise disable the other interface
 
+---
+
+https://mqtthq.com/client

@@ -14,10 +14,13 @@
 
 # USE THIS VERY EASY https://github.com/AaditT/mpu6050-with-Raspberry-Pi
 
+# data is given 0 - 9 (0 - 90 degrees)
+
 from mpu6050 import mpu6050
 import time
 mpu = mpu6050(0x68)
 
+threshold = 0.5
 while True:
 
     accel_data = mpu.get_accel_data()
@@ -26,4 +29,14 @@ while True:
     print("Acc Z : "+str(accel_data['z']))
     print()
 
-    time.sleep(1)
+    x = accel_data['x']
+    time.sleep(0.5)
+    accel_data = mpu.get_accel_data()
+    new_x = accel_data['x']
+    print(new_x)
+    print("new number: ", x + 1.0)
+    if new_x > threshold + x or new_x > threshold - x:
+        print("alarmed at: ",new_x)
+        print('movement detected')
+    
+

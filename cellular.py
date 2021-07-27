@@ -1,4 +1,4 @@
-# SIM800x gsm/gprs hat
-
-# May use tmobile card instead
+# This will configure the mobile network.
+# Can also trigger disable hostpot wifi script
+# Use tmobile card instead
 
