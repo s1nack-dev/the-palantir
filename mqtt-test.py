@@ -5,16 +5,16 @@
 from time import sleep
 
 import paho.mqtt.client as mqtt
-import logging
-import logging.config
+import logzero
+from logzero import logger
 import datetime
 
 #%%
 
-LOG_FILENAME = '/home/pi/logs/motion-pir.log'
-#logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG)
-topic = "mqttHQ-client-test-324234235234"
+LOG_FILENAME = '/home/pi/test.log'
+topic = "mqttHQ-client-test-3242342352341"
 broker = "public.mqtthq.com"
+logzero.logfile(LOG_FILENAME)
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -38,10 +38,9 @@ client.publish(topic, payload="Starting Test", qos=0, retain=False)
 
 
 while True:
-  print('this is a test!')
   timestamp = str((datetime.datetime.now()))
   timestamp = timestamp[0:19]
-  print("Image captured at",timestamp)
+  logger.info("Test Alert at %s" % timestamp)
   client.publish(topic, payload="this is a test: " + timestamp, qos=0, retain=False)
   sleep(5)
 

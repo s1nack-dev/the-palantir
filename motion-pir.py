@@ -5,13 +5,22 @@
 from time import sleep
 from gpiozero import MotionSensor
 import paho.mqtt.client as mqtt
-import logging
-import logging.config
+import logzero
+from logzero import logger
+import datetime
 
-LOG_FILENAME = '/home/pi/logs/motion-pir.log'
-logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG)
-topic = "mqttHQ-client-test-324234235234"
+LOG_FILENAME = '/home/pi/log/pir.log'
+topic = "mqttHQ-client-test-3242342352341"
 broker = "public.mqtthq.com"
+pir = MotionSensor(22)
+
+def detectIntruders():
+  pir.wait_for_motion()
+  timestamp = str((datetime.datetime.now()))
+  timestamp = timestamp[0:19]
+  logger.info("PIR Motion Detected")
+  client.publish(topic, payload="PIR Motion Detected @ " + timestamp, qos=0, retain=False)
+  sleep(5)
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -25,21 +34,20 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
 
+logzero.logfile(LOG_FILENAME)
+
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 
 client.connect(broker, 1883, 60)
 
-def detectIntruders():
-  pir.wait_for_motion()
-  print('Intruder Alert!')
-  client.publish(topic, payload="PIR Motion Detected", qos=0, retain=False)
-  sleep(5)
+logger.info("Starting PIR Motion Monitoring")
+client.publish(topic, payload="Starting PIR Motion Monitoring", qos=0, retain=False)
+
+
 
 sleep(1)
-
-pir = MotionSensor(22)
 
 while True:
   detectIntruders()
