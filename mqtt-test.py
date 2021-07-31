@@ -8,13 +8,21 @@ import paho.mqtt.client as mqtt
 import logzero
 from logzero import logger
 import datetime
+import os
+import atexit
 
 #%%
-
-LOG_FILENAME = '/home/pi/test.log'
+pwd = os.getcwd()
+LOG_FILENAME = pwd + '/log/test.log'
 topic = "mqttHQ-client-test-3242342352341"
 broker = "public.mqtthq.com"
+if not os.path.isfile(LOG_FILENAME):
+  os.mkdir(pwd + "/log")
 logzero.logfile(LOG_FILENAME)
+
+def on_exit():
+  logger.info("Exit command given")
+  client.publish(topic, payload="Exit command given", qos=0, retain=False)
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -36,6 +44,7 @@ client.connect(broker, 1883, 60)
 
 client.publish(topic, payload="Starting Test", qos=0, retain=False)
 
+atexit.register(on_exit)
 
 while True:
   timestamp = str((datetime.datetime.now()))
