@@ -9,7 +9,8 @@ import logzero
 from logzero import logger
 import datetime
 
-LOG_FILENAME = '/home/pi/log/pir.log'
+pwd = "/home/pi/the-palantir"
+LOG_FILENAME = pwd + '/log/pir.log'
 topic = "mqttHQ-client-test-3242342352341"
 broker = "public.mqtthq.com"
 pir = MotionSensor(22)

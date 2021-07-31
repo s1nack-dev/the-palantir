@@ -27,7 +27,8 @@ mpu = mpu6050(0x68)
 MOVEMENT_THRESHOLD = 0.5
 DELAY = 0.5
 
-LOG_FILENAME = '/home/pi/log/accelerometer.log'
+pwd = "/home/pi/the-palantir"
+LOG_FILENAME = pwd + '/log/accelerometer.log'
 topic = "mqttHQ-client-test-3242342352341"
 broker = "public.mqtthq.com"
 
