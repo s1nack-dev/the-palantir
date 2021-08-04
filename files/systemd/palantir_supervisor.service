@@ -8,6 +8,9 @@ ExecStart=/usr/bin/python3 /home/pi/the-palantir/supervisor.py
 User=pi
 Restart=on-failure
 RestartSec=10s
+KillSignal=SIGINT
+ExecStopPost=/bin/echo "Systemd Service Stop" > /home/pi/the-palantir/log/supervisor.log
+
 
 [Install]
 WantedBy=multi-user.target

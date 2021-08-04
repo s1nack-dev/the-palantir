@@ -8,6 +8,7 @@ ExecStart=/usr/bin/python3 /home/pi/the-palantir/motion-microwave.py
 User=pi
 Restart=on-failure
 RestartSec=10s
+KillSignal=SIGINT
 
 [Install]
 WantedBy=multi-user.target
